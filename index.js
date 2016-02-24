@@ -25,7 +25,7 @@ mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 //get number of records
 var currentRecord = db.collection('urlstorage').count();
 console.log(currentRecord)
-db.collectiong('urlstorage').insert({"short": 1, "long":checkedURL})
+db.collection('urlstorage').insert({"short": 1, "long":checkedURL})
 
 });
 } else {
