@@ -29,8 +29,8 @@ db.collection('urlstorage').insert({"short": currentRecord + 1, "long":checkedUR
 } else {
   usedURL = sanitize(usedURL.substring(1))
   mongo.connect(process.env.MONGOLAB_URI,function(err,db){
-var redirectURL = db.collection('urlstorage').find({"short": usedURL});
-console.log(redirectURL)
+var stuff = db.collection('urlstorage').find({"short": usedURL});
+console.log(stuff)
 res.writeHead(301, {"location": redirectURL.long});
 res.end();
 //taco
