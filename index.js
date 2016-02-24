@@ -17,18 +17,17 @@ var checkedURL = checkURL(sanitizedURL)
 if (checkedURL == "Please input valid URL"){
   res.writeHead(200, { 'Content-Type': 'application/json' });
   res.write(JSON.stringify({"error": checkedURL}));
-  //res.write(testOut);
   res.end();
+  return
 }
-
-//URL entered -- verify then add set 2MB max size for DB
-
-//add url to db
-
+//URL entered -- verifyed then add dataset 2MB max size for DB
+if (checkedURL == "http://www.google.com") {
+  res.redirect('http://www.google.com')
 }
+}
+//Check if retreving
 
 
-//parse JSON response
 
 });
 server.listen(process.env.PORT || 8888);
