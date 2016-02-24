@@ -22,7 +22,8 @@ if (checkedURL == "Please input valid URL"){
 }
 //URL entered -- verifyed then add dataset 2MB max size for DB
 if (checkedURL == "http://www.google.com") {
-  res.redirect('http://www.google.com')
+  res.writeHead(301,{"location": 'http://www.google.com')});
+  res.end();
 }
 }
 //Check if retreving
