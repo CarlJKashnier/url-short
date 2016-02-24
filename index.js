@@ -23,13 +23,13 @@ if (checkedURL == "Please input valid URL"){
 //URL entered -- verifyed then add dataset 2MB max size for DB
 mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 //get number of records
-var currentRecord = db.urlstorage.count();
+var currentRecord = db.collection('urlstorage').count();
 console.log(currentRecord)
 //db.urlstorage.insert()
 
-})
+});
 }
-} else{
+} else {
   //Recall here
   var sanitizedURL = sanitize(usedURL.substring(1))
   var checkedURL = checkURL(sanitizedURL)
