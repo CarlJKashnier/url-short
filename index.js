@@ -13,9 +13,14 @@ var usedURL = url.parse(req.url).pathname;
 //Sanitize URL (this will touch the DB and we want to ensure nothing extra gets in)
 if (usedURL.substring(0,5) == "/new/") {
 var sanitizedURL = sanitize(usedURL.substring(5))
-  console.log(sanitizedURL);
 var checkedURL = checkURL(sanitizedURL)
-console.log(checkedURL)
+if (checkedURL == "Please input valid URL"){
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.write(JSON.stringify({"error": checkedURL}));
+  //res.write(testOut);
+  res.end();
+}
+
 //URL entered -- verify then add set 2MB max size for DB
 
 //add url to db
