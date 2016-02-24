@@ -1,6 +1,8 @@
 var http = require('http')
 var sanitize = require('sanitize-caja')
 var url = require('url')
+var connect = require('connect')
+var mongo = require('mongo')
 
 var server = http.createServer(function (req, res) {
 //Expected input /new/http://www.somewhere.com
