@@ -30,7 +30,7 @@ db.collection('urlstorage').insert({"short": currentRecord + 1, "long":checkedUR
   usedURL = sanitize(usedURL.substring(1))
 var redirectURL = db.collection('urlstorage').find( { "short": {$eq: usedURL} }, "long")
 console.log(redirectURL)
-    res.writeHead(200, {"location": redirectURL});
+    res.writeHead(200, JSON.stringify({"location": redirectURL}));
     res.end();
   //Recall here
 
