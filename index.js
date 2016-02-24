@@ -36,8 +36,9 @@ console.log(currentRecord)
   if (checkedURL == "http://www.google.com") {
     res.writeHead(301, {"location": 'http://www.google.com'});
     res.end();
-    */
+
   }
+  */
 }
 //Check if retreving
 
