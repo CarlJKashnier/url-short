@@ -24,21 +24,22 @@ if (checkedURL == "Please input valid URL"){
 mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 //get number of records
 var currentRecord = db.collection('urlstorage').count();
-console.log(currentRecord)
-db.collection('urlstorage').insert({"short": 1, "long":checkedURL})
-
+db.collection('urlstorage').insert({"short": currentRecord + 1, "long":checkedURL})
 });
 } else {
-  //Recall here
-  var sanitizedURL = sanitize(usedURL.substring(1))
-  var checkedURL = checkURL(sanitizedURL)
-  /*
-  if (checkedURL == "http://www.google.com") {
-    res.writeHead(301, {"location": 'http://www.google.com'});
-    res.end();
+  usedURL = sanitize(usedURL.substring(1))
+var redirectURL = db.collection('urlstorage').find( { "short": {$eq: usedURL} }, "long")
+console.log(redirectURL)
 
-  }
-  */
+  //Recall here
+
+
+
+//    res.writeHead(301, {"location": 'http://www.google.com'});
+//    res.end();
+
+
+
 }
 //Check if retreving
 
