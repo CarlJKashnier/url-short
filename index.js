@@ -23,7 +23,7 @@ if (checkedURL == "Please input valid URL"){
 //URL entered -- verifyed then add dataset 2MB max size for DB
 mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 //get number of records
-var currentRecord = db.urlstorage.count()
+var currentRecord = db.urlstorage.count();
 console.log(currentRecord)
 //db.urlstorage.insert()
 
