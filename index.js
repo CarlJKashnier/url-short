@@ -21,10 +21,26 @@ if (checkedURL == "Please input valid URL"){
   return
 }
 //URL entered -- verifyed then add dataset 2MB max size for DB
-if (checkedURL == "http://www.google.com") {
-  res.writeHead(301, {"location": 'http://www.google.com'});
-  res.end();
+mongo.connect(process.env.MONGOLAB_URI,function(err,db){
+//get number of records
+var currentRecord = db.urlstorage.count(,function(err, count){
+  return count;
+})
+console.log(currentRecord)
+//db.urlstorage.insert()
+
+})
 }
+} else{
+  //Recall here
+  var sanitizedURL = sanitize(usedURL.substring(1))
+  var checkedURL = checkURL(sanitizedURL)
+  /*
+  if (checkedURL == "http://www.google.com") {
+    res.writeHead(301, {"location": 'http://www.google.com'});
+    res.end();
+    */
+  }
 }
 //Check if retreving
 
