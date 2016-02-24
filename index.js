@@ -28,7 +28,6 @@ console.log(currentRecord)
 //db.urlstorage.insert()
 
 });
-}
 } else {
   //Recall here
   var sanitizedURL = sanitize(usedURL.substring(1))
