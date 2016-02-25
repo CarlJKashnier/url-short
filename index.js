@@ -25,9 +25,10 @@ var server = http.createServer(function (req, res) {
       db.collection('urlstorage').insert({short: docs+1, long:checkedURL})
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.write(JSON.stringify({"short": "https://arcane-gorge-62849.herokuapp.com/" + (docs+1),"long": checkedURL}));
-      res.end();});
+      res.end();
+    db.close();});
       });
-      db.close();
+
       return
 //After the Else is broken and I am puzzled why
   } else {
