@@ -41,20 +41,13 @@ res.end();
 //res.writeHead(301, {"location": redirectURL.long});
 //res.end();
 
-});
+}});
 
 //    res.writeHead(200, JSON.stringify({"location": redirectURL}));
 //    res.end();
   //Recall here
-
-
-
 //    res.writeHead(301, {"location": 'http://www.google.com'});
 //    res.end();
-
-
-
-}
 //Check if retreving
 
 
