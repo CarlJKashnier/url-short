@@ -44,7 +44,7 @@ return
 
 
 
- mongo.open(process.env.MONGOLAB_URI,function(err,db){
+ mongo.client.open(process.env.MONGOLAB_URI,function(err,db){
 var collection = db.collection('urlstorage')
 var intForLU = parseInt(usedURL)
 console.log("#" + intForLU +"#")
