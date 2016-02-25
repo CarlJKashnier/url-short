@@ -28,11 +28,11 @@ var currentRecord = db.collection('urlstorage').count(function(err, docs){
 db.collection('urlstorage').insert({"short": docs+1, "long":checkedURL})});
 });
 } else {
-  usedURL = sanitize(usedURL.substring(1))
+  usedURL = parseInt(sanitize(usedURL.substring(1)))
   //console.log(usedURL)
   mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 
-var stuff = db.collection('urlstorage').find({"short": parseInt(usedURL)},function(err, doc){
+var stuff = db.collection('urlstorage').find({"short": usedURL},function(err, doc){
 if (err){
   res.writeHead(200, JSON.stringify({"url": "Invalid Short URL"}));
   res.end();
