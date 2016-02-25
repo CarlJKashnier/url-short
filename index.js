@@ -26,21 +26,27 @@ if (checkedURL == "Please input valid URL"){
 //URL entered -- verifyed then add dataset 2MB max size for DB
 mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 //get number of records & add to DB
-var currentRecord = db.collection('urlstorage').count(function(err, docs){
-db.collection('urlstorage').insert({short: docs+1, long:checkedURL})
+var currentRecord = db.collections('urlstorage').count(function(err, docs){
+db.collections('urlstorage').insert({short: docs+1, long:checkedURL})
 res.writeHead(200, { 'Content-Type': 'application/json' });
 res.write(JSON.stringify({"short": "https://arcane-gorge-62849.herokuapp.com/" + (docs+1),"long": checkedURL}));
 res.end();});
 });
 db.close();
+return
 //After the Else is broken and I am puzzled why
 } else {
 //this works
   usedURL = parseInt(sanitize(usedURL.substring(1)))
 //This is the part that isn't working
-  mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 
-var collection = db.collection('urlstorage')
+
+
+
+
+ mongo.connect(process.env.MONGOLAB_URI,function(err,db){
+
+var collection = db.collections('urlstorage')
 var intForLU = parseInt(usedURL)
 console.log("#" + intForLU +"#")
 var stuff = collection.findOne(({"short": 1},{long:1, short:0, _id:0}),function(err, doc){
@@ -56,6 +62,7 @@ var stuff = collection.findOne(({"short": 1},{long:1, short:0, _id:0}),function(
 });
 
 });
+
 
 }});
 
