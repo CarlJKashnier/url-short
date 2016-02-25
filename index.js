@@ -26,10 +26,11 @@ var server = http.createServer(function (req, res) {
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.write(JSON.stringify({"short": "https://arcane-gorge-62849.herokuapp.com/" + (docs+1),"long": checkedURL}));
       res.end();
-    db.close();});
+    db.close();
+  return});
       });
 
-      return
+      
 //After the Else is broken and I am puzzled why
   } else {
 //this works
