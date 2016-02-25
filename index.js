@@ -34,13 +34,19 @@ var server = http.createServer(function (req, res) {
 //this works
       usedURL = parseInt(sanitize(usedURL.substring(1)))
       mongo.connect(process.env.MONGOLAB_URI,function(err,db){
-      var intForLU = parseInt(usedURL)
-      console.log("#" + intForLU +"#")
-      var stuff = db.collection('urlstorage').findOne(({"short": 1},{"long": 1, "short": 0, "_id": 0}));
-        console.log(doc)
+      //var intForLU = parseInt(usedURL)
+      //console.log("#" + intForLU +"#")
+      //var stuff = db.collection('urlstorage').findOne(({"short": 1},{"long": 1, "short": 0, "_id": 0}));
+      //  console.log(doc)
+db.collection('urlstorage').find().toArray(function(err, results){
+  console.log(results)
+  db.close();
+})
+
+
       }) //find if a value exists
     }})
-    
+
 
 server.listen(process.env.PORT || 8888);
 
