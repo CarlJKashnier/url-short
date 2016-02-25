@@ -40,10 +40,9 @@ var server = http.createServer(function (req, res) {
       //var stuff = db.collection('urlstorage').findOne(({"short": 1},{"long": 1, "short": 0, "_id": 0}));
       //  console.log(doc)
 db.collection('urlstorage').find({short: usedURL}).toArray(function(err, results){
-  //console.log(usedURL + " " + results)
+  console.log(usedURL + " " + results)
   if (results.length > 0)
-
-  {
+{
     console.log(results[0].long)
 
   res.writeHead(301, {'Location': results[0].long});
@@ -57,7 +56,7 @@ db.collection('urlstorage').find({short: usedURL}).toArray(function(err, results
     res.end();
     db.close();
     return
-  } 
+  }
 
 })
 
