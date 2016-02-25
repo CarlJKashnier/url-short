@@ -41,7 +41,7 @@ db.close();
   mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 
 var collection = db.collection('urlstorage')
-var stuff = collection.find((){short: usedURL},{long:1, short:0, _id:0}),function(err, doc){
+var stuff = collection.find(({short: usedURL},{long:1, short:0, _id:0}),function(err, doc){
   if(doc) //if it does
   {
       console.log(doc); // print out what it sends back
