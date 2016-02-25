@@ -39,9 +39,8 @@ var server = http.createServer(function (req, res) {
       var stuff = db.collection('urlstorage').findOne(({"short": 1},{"long": 1, "short": 0, "_id": 0}));
         console.log(doc)
       }) //find if a value exists
-      })
-    };
-});
+    }})
+    
 
 server.listen(process.env.PORT || 8888);
 
