@@ -41,7 +41,8 @@ db.close();
   mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 
 var collection = db.collection('urlstorage')
-var stuff = collection.findOne(({short: parsedInt(usedURL)},{long:1, short:0, _id:0}),function(err, doc){
+var intForLU = parseInt(usedURL)
+var stuff = collection.findOne(({"short": intForLU},{long:1, short:0, _id:0}),function(err, doc){
   if(doc) //if it does
   {
       console.log(doc); // print out what it sends back
