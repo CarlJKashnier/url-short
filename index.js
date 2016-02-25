@@ -41,7 +41,6 @@ var server = http.createServer(function (req, res) {
 console.log(stuff)
       })
     };
-}
 });
 
 server.listen(process.env.PORT || 8888);
