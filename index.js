@@ -42,8 +42,8 @@ db.close();
 
 var collection = db.collection('urlstorage')
 var intForLU = parseInt(usedURL)
-console.log(intForLU)
-var stuff = collection.findOne(({"short": intForLU},{long:1, short:0, _id:0}),function(err, doc){
+console.log("#" + intForLU +"#")
+var stuff = collection.findOne(({"short": {intForLU}},{long:1, short:0, _id:0}),function(err, doc){
   if(doc) //if it does
   {
       console.log(doc); // print out what it sends back
