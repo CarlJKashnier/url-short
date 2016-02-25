@@ -30,7 +30,7 @@ db.collection('urlstorage').insert({"short": currentRecord + 1, "long":checkedUR
   usedURL = sanitize(usedURL.substring(1))
   console.log(usedURL)
   mongo.connect(process.env.MONGOLAB_URI,function(err,db){
-var stuff = db.urlstorage.find("short": {$et: usedURL});
+var stuff = db.urlstorage.find({}"short": {$et: usedURL}});
 console.log(stuff)
 });
 //res.writeHead(301, {"location": redirectURL.long});
