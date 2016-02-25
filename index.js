@@ -41,6 +41,15 @@ var server = http.createServer(function (req, res) {
 db.collection('urlstorage').find({short: usedURL}).toArray(function(err, results){
   console.log(results)
   db.close();
+  if (results.length =0 then)
+  {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.write(JSON.stringify({"url": "Invalid URL" + (docs+1),"long": checkedURL}));
+    res.end();});
+  } else {
+  res.writeHead(301, { 'location': results.long });
+  res.end();
+}
 })
 
 
