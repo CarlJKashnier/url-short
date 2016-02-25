@@ -30,13 +30,13 @@ db.collection('urlstorage').insert({"short": currentRecord + 1, "long":checkedUR
   usedURL = sanitize(usedURL.substring(1))
   console.log(usedURL)
   mongo.connect(process.env.MONGOLAB_URI,function(err,db){
-var stuff = db.collection('urlstorage').find({"short": {$et: parseInt(usedURL)}});
-console.log(stuff)
-});
+var stuff = db.collection('urlstorage').find({"short": {$et: parseInt(usedURL)}},function(err, doc){console.log(doc)});
+
+
 //res.writeHead(301, {"location": redirectURL.long});
 //res.end();
-//taco
 
+});
 
 //    res.writeHead(200, JSON.stringify({"location": redirectURL}));
 //    res.end();
