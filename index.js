@@ -37,6 +37,7 @@ if (err){
   res.writeHead(200, JSON.stringify({"location": "Invalid Short URL"}));
   res.end();
 }
+console.log(doc)
 res.writeHead(200, doc);
 res.end();
 //res.writeHead(301, {"location": redirectURL.long});
