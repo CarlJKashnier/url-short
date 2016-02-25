@@ -3,6 +3,7 @@ var sanitize = require('sanitize-caja')
 var url = require('url')
 var connect = require('connect')
 var mongo = require('mongodb')
+var mongoose = require("mongoose")
 
 var server = http.createServer(function (req, res) {
 //Expected input /new/http://www.somewhere.com
@@ -21,18 +22,18 @@ if (checkedURL == "Please input valid URL"){
   return
 }
 //URL entered -- verifyed then add dataset 2MB max size for DB
-mongo.connect(process.env.MONGOLAB_URI,function(err,db){
+mongoose.connect(process.env.MONGOLAB_URI,function(err,db){
 //get number of records
 var currentRecord = db.collection('urlstorage').count();
 console.log(currentRecord)
-var short = parsedInt(currentRecord) + 1;
-db.collection('urlstorage').insert({"short": short, "long":checkedURL});
+//var short = parsedInt(currentRecord) + 1;
+//db.collection('urlstorage').insert({"short": short, "long":checkedURL});
 
 });
 } else {
   usedURL = sanitize(usedURL.substring(1))
   //console.log(usedURL)
-  mongo.connect(process.env.MONGOLAB_URI,function(err,db){
+  mongoose.connect(process.env.MONGOLAB_URI,function(err,db){
 
 var stuff = db.collection('urlstorage').find({"short": "1"},function(err, doc){console.log(doc)});
 
