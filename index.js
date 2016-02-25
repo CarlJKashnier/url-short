@@ -47,7 +47,7 @@ db.collection('urlstorage').find({short: usedURL}).toArray(function(err, results
     res.write(JSON.stringify({"url": "Invalid short URL"}));
     res.end();
   } else {
-  res.writeHead(301, { 'location': results[2] });
+  res.writeHead(301, {'Location': results[2] });
   res.end();
 }
 })
