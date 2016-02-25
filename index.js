@@ -48,7 +48,7 @@ db.collection('urlstorage').find({short: usedURL}).toArray(function(err, results
     res.end();
   } else {
     console.log(results[0].long)
-  res.writeHead(301, {'Location': results.long});
+  res.writeHead(301, {'Location': results[0].long});
   res.end();
 }
 db.close();
