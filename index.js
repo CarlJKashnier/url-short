@@ -49,10 +49,6 @@ res.end();
 //    res.writeHead(301, {"location": 'http://www.google.com'});
 //    res.end();
 //Check if retreving
-
-
-
-});
 server.listen(process.env.PORT || 8888);
 
 
