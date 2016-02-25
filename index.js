@@ -40,7 +40,6 @@ var server = http.createServer(function (req, res) {
       //  console.log(doc)
 db.collection('urlstorage').find({short: usedURL}).toArray(function(err, results){
   console.log(usedURL + " " + results)
-console.log(results[0].long);
   if (results.length == 0)
   {
     res.writeHead(200, { 'Content-Type': 'application/json' });
