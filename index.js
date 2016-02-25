@@ -52,8 +52,9 @@ var stuff = collection.findOne(({"short": 1},{long:1, short:0, _id:0}),function(
   {
       console.log("Not in docs");
   }
+  db.close();
 });
-db.close();
+
 });
 
 }});
