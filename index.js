@@ -24,7 +24,9 @@ if (checkedURL == "Please input valid URL"){
 mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 //get number of records
 var currentRecord = db.collection('urlstorage').count();
-db.collection('urlstorage').insert({"short": currentRecord + 1, "long":checkedURL})
+console.log(currentRecord)
+var short = parsedInt(currentRecord) + 1
+db.collection('urlstorage').insert({"short": short, "long":checkedURL})
 
 });
 } else {
