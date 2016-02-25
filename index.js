@@ -45,7 +45,7 @@ return
 
 
  mongo.connect(process.env.MONGOLAB_URI,function(err,db){
-db.auth(heroku_bbthtrnd,70ttrtoo1e7vl85dibj8pcatp8)
+db.auth('heroku_bbthtrnd','70ttrtoo1e7vl85dibj8pcatp8')
 var collection = db.collection('urlstorage')
 var intForLU = parseInt(usedURL)
 console.log("#" + intForLU +"#")
