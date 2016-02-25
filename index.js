@@ -38,7 +38,7 @@ var server = http.createServer(function (req, res) {
       //console.log("#" + intForLU +"#")
       //var stuff = db.collection('urlstorage').findOne(({"short": 1},{"long": 1, "short": 0, "_id": 0}));
       //  console.log(doc)
-db.collection('urlstorage').find().toArray(function(err, results){
+db.collection('urlstorage').find({short: usedURL}).toArray(function(err, results){
   console.log(results)
   db.close();
 })
