@@ -24,11 +24,8 @@ if (checkedURL == "Please input valid URL"){
 //URL entered -- verifyed then add dataset 2MB max size for DB
 mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 //get number of records
-var currentRecord = db.collection('urlstorage').count(function(err, docs){console.log(docs)});
-//.when(currentRecord).console.log(currentRecord)
-//var short = parsedInt(currentRecord) + 1;
-//db.collection('urlstorage').insert({"short": short, "long":checkedURL});
-
+var currentRecord = db.collection('urlstorage').count(function(err, docs){
+db.collection('urlstorage').insert({"short": docs+1, "long":checkedURL})});
 });
 } else {
   usedURL = sanitize(usedURL.substring(1))
