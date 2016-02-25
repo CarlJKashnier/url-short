@@ -26,8 +26,8 @@ if (checkedURL == "Please input valid URL"){
 //URL entered -- verifyed then add dataset 2MB max size for DB
 mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 //get number of records & add to DB
-var currentRecord = db.collections('urlstorage').count(function(err, docs){
-db.collections('urlstorage').insert({short: docs+1, long:checkedURL})
+var currentRecord = db.collection('urlstorage').count(function(err, docs){
+db.collection('urlstorage').insert({short: docs+1, long:checkedURL})
 res.writeHead(200, { 'Content-Type': 'application/json' });
 res.write(JSON.stringify({"short": "https://arcane-gorge-62849.herokuapp.com/" + (docs+1),"long": checkedURL}));
 res.end();});
@@ -45,8 +45,8 @@ return
 
 
  mongo.connect(process.env.MONGOLAB_URI,function(err,db){
-
-var collection = db.collections('urlstorage')
+db.auth(heroku_bbthtrnd,70ttrtoo1e7vl85dibj8pcatp8)
+var collection = db.collection('urlstorage')
 var intForLU = parseInt(usedURL)
 console.log("#" + intForLU +"#")
 var stuff = collection.findOne(({"short": 1},{long:1, short:0, _id:0}),function(err, doc){
