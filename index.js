@@ -63,7 +63,7 @@ var stuff = collection.findOne(({"short": 1},{long:1, short:0, _id:0}).toArray(f
 });
 
 
-});
+}});
 
 server.listen(process.env.PORT || 8888);
 
