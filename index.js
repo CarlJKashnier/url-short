@@ -32,7 +32,16 @@ db.collection('urlstorage').insert({"short": docs+1, "long":checkedURL})});
   //console.log(usedURL)
   mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 
-var stuff = db.collection('urlstorage').find({"short": "1"},function(err, doc){console.log(doc)});
+var stuff = db.collection('urlstorage').find({"short": usedURL},function(err, doc){
+if (err){
+  res.writeHead(200, JSON.stringify({"location": "Invalid Short URL"}));
+  res.end();
+}
+res.writeHead(200, JSON.stringify(doc));
+res.end();
+//res.writeHead(301, {"location": redirectURL.long});
+//res.end();
+});
 
 
 //res.writeHead(301, {"location": redirectURL.long});
