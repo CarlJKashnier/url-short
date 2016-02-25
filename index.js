@@ -40,8 +40,8 @@ res.end();});
   mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 
 
-var stuff = db.collection('urlstorage').find({"short": usedURL},{"long":true, "short":false, "_id":false},function(err, docs){
-  console.log(docs)
+var stuff = db.collection('urlstorage').find({"short": usedURL},{"long":1, "short":0, "_id":0},function(err, docs){
+  console.log(docs.long)
 });
 });
 
