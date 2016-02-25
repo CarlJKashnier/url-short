@@ -24,7 +24,7 @@ if (checkedURL == "Please input valid URL"){
   return
 }
 //URL entered -- verifyed then add dataset 2MB max size for DB
-mongo.db.open(process.env.MONGOLAB_URI,function(err,db){
+mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 //get number of records & add to DB
 var currentRecord = db.collection('urlstorage').count(function(err, docs){
 db.collection('urlstorage').insert({short: docs+1, long:checkedURL})
@@ -44,7 +44,7 @@ return
 
 
 
- mongo.client.open(process.env.MONGOLAB_URI,function(err,db){
+ mongo.db.open(process.env.MONGOLAB_URI,function(err,db){
 var collection = db.collection('urlstorage')
 var intForLU = parseInt(usedURL)
 console.log("#" + intForLU +"#")
