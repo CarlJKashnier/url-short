@@ -15,6 +15,8 @@ var usedURL = url.parse(req.url).pathname;
 if (usedURL.substring(0,5) == "/new/") {
 var sanitizedURL = sanitize(usedURL.substring(5))
 var checkedURL = checkURL(sanitizedURL)
+//This Section Works
+
 if (checkedURL == "Please input valid URL"){
   res.writeHead(200, { 'Content-Type': 'application/json' });
   res.write(JSON.stringify({"error": checkedURL}));
@@ -30,9 +32,11 @@ res.writeHead(200, { 'Content-Type': 'application/json' });
 res.write(JSON.stringify({"short": "https://arcane-gorge-62849.herokuapp.com/" + (docs+1),"long": checkedURL}));
 res.end();});
 });
+//After the Else is broken and I am puzzled why
 } else {
+//this works
   usedURL = parseInt(sanitize(usedURL.substring(1)))
-
+//This is the part that isn't working
   mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 
 
