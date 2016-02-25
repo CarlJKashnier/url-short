@@ -37,8 +37,9 @@ var server = http.createServer(function (req, res) {
       var collection = db.collection('urlstorage')
       var intForLU = parseInt(usedURL)
       console.log("#" + intForLU +"#")
-      var stuff = collection.findOne({"short": 1},{long:1, short:0, _id:0}) //find if a value exists
-console.log(stuff)
+      var stuff = collection.findOne(({"short": 1},{long:1, short:0, _id:0}),function(err, doc){
+        console.log(doc)
+      }) //find if a value exists
       })
     };
 });
