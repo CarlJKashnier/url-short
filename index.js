@@ -41,7 +41,7 @@ res.end();});
 
 
 var stuff = db.collection('urlstorage').find({"short": usedURL},{"long":1, "short":0, "_id":0},function(err, docs){
-  console.log(docs.long)
+  console.log(doc.long)
 });
 });
 
