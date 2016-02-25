@@ -34,11 +34,12 @@ db.collection('urlstorage').insert({"short": docs+1, "long":checkedURL})});
 
 var stuff = db.collection('urlstorage').find({"short": parseInt(usedURL)},function(err, doc){
 if (err){
-  res.writeHead(200, JSON.stringify({"location": "Invalid Short URL"}));
+  res.writeHead(200, JSON.stringify({"url": "Invalid Short URL"}));
   res.end();
 }
 console.log(doc)
-res.writeHead(200, doc);
+res.writeHead(200);
+res.write(doc)
 res.end();
 //res.writeHead(301, {"location": redirectURL.long});
 //res.end();
