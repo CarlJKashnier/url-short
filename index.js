@@ -27,7 +27,7 @@ if (checkedURL == "Please input valid URL"){
 mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 //get number of records & add to DB
 var currentRecord = db.collection('urlstorage').count(function(err, docs){
-db.collection('urlstorage').insert({"short": docs+1, "long":checkedURL})
+db.collection('urlstorage').insert({short: docs+1, long:checkedURL})
 res.writeHead(200, { 'Content-Type': 'application/json' });
 res.write(JSON.stringify({"short": "https://arcane-gorge-62849.herokuapp.com/" + (docs+1),"long": checkedURL}));
 res.end();});
@@ -40,7 +40,7 @@ res.end();});
   mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 
 
-var stuff = db.collection('urlstorage').find({"short": usedURL},{"long":1, "short":0, "_id":0},function(err, docs){
+var stuff = db.collection('urlstorage').find({short: usedURL},{long:1, short:0, _id:0},function(err, docs){
   console.log(doc.long)
 });
 });
