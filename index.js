@@ -34,10 +34,9 @@ var server = http.createServer(function (req, res) {
 //this works
       usedURL = parseInt(sanitize(usedURL.substring(1)))
       mongo.connect(process.env.MONGOLAB_URI,function(err,db){
-      var collection = db.collection('urlstorage')
       var intForLU = parseInt(usedURL)
       console.log("#" + intForLU +"#")
-      var stuff = collection.find(({"short": 1},{"long": 1, "short": 0, "_id": 0}),function(err, doc){
+      var stuff = db.collection('urlstorage').find(({"short": 1},{"long": 1, "short": 0, "_id": 0}),function(err, doc){
         console.log(doc)
       }) //find if a value exists
       })
