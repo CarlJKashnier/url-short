@@ -32,6 +32,7 @@ res.writeHead(200, { 'Content-Type': 'application/json' });
 res.write(JSON.stringify({"short": "https://arcane-gorge-62849.herokuapp.com/" + (docs+1),"long": checkedURL}));
 res.end();});
 });
+db.close();
 //After the Else is broken and I am puzzled why
 } else {
 //this works
@@ -39,11 +40,18 @@ res.end();});
 //This is the part that isn't working
   mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 
-
-var stuff = db.urlstorage.find({short: usedURL},{long:1, short:0, _id:0},function(err, docs){
-  //console.log(doc.long)
-  console.log(err)
+var collection = db.collection('urlstorage')
+var stuff = collection.find((){short: usedURL},{long:1, short:0, _id:0}),function(err, doc){
+  if(doc) //if it does
+  {
+      console.log(doc); // print out what it sends back
+  }
+  else if(!doc) // if it does not
+  {
+      console.log("Not in docs");
+  }
 });
+db.close();
 });
 
 }});
