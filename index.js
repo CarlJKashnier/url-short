@@ -30,24 +30,14 @@ var server = http.createServer(function (req, res) {
   return});
       });
 
-      
-//After the Else is broken and I am puzzled why
-  } else {
-//this works
-      //usedURL = parseInt(sanitize(usedURL.substring(1)))
 
+
+  } else {
       mongo.connect(process.env.MONGOLAB_URI,function(err,db){
-      //var intForLU = parseInt(usedURL)
-      //console.log("#" + intForLU +"#")
-      //var stuff = db.collection('urlstorage').findOne(({"short": 1},{"long": 1, "short": 0, "_id": 0}));
-      //  console.log(doc)
       usedURL = parseInt(usedURL.substring(1));
-db.collection('urlstorage').find({"short": usedURL}).toArray(function(err, results){
-  console.log(usedURL + " " + results)
+      db.collection('urlstorage').find({"short": usedURL}).toArray(function(err, results){
   if (results.length > 0)
 {
-    console.log(results[0].long)
-
   res.writeHead(301, {'Location': results[0].long});
   res.end();
   db.close();
