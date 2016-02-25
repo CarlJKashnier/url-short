@@ -32,7 +32,7 @@ var server = http.createServer(function (req, res) {
 //After the Else is broken and I am puzzled why
   } else {
 //this works
-      usedURL = parseInt(sanitize(usedURL.substring(1)))
+      //usedURL = parseInt(sanitize(usedURL.substring(1)))
       console.log(usedURL)
       mongo.connect(process.env.MONGOLAB_URI,function(err,db){
       //var intForLU = parseInt(usedURL)
