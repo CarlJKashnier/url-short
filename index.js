@@ -23,35 +23,26 @@ if (checkedURL == "Please input valid URL"){
 }
 //URL entered -- verifyed then add dataset 2MB max size for DB
 mongo.connect(process.env.MONGOLAB_URI,function(err,db){
-//get number of records
+//get number of records & add to DB
 var currentRecord = db.collection('urlstorage').count(function(err, docs){
-db.collection('urlstorage').insert({"short": docs+1, "long":checkedURL})});
+db.collection('urlstorage').insert({"short": docs+1, "long":checkedURL})
+res.writeHead(200, { 'Content-Type': 'application/json' });
+res.write(JSON.stringify({"short": "https://arcane-gorge-62849.herokuapp.com/" + (docs+1),"long": checkedURL}));
+res.end();});
 });
 } else {
   usedURL = parseInt(sanitize(usedURL.substring(1)))
-  //console.log(usedURL)
+
   mongo.connect(process.env.MONGOLAB_URI,function(err,db){
-//taco
+
 
 var stuff = db.collection('urlstorage').find({"short": usedURL},{"long":true, "short":false, "_id":false},function(err, docs){
   console.log(docs)
 });
-
-
 });
-
-
-//res.writeHead(301, {"location": redirectURL.long});
-//res.end();
 
 }});
 
-//    res.writeHead(200, JSON.stringify({"location": redirectURL}));
-//    res.end();
-  //Recall here
-//    res.writeHead(301, {"location": 'http://www.google.com'});
-//    res.end();
-//Check if retreving
 server.listen(process.env.PORT || 8888);
 
 
