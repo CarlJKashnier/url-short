@@ -44,10 +44,10 @@ db.collection('urlstorage').find({short: usedURL}).toArray(function(err, results
   if (results === [])
   {
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.write(JSON.stringify({"url": "Invalid URL" + (docs+1),"long": checkedURL}));
+    res.write(JSON.stringify({"url": "Invalid short URL"}));
     res.end();
   } else {
-  res.writeHead(301, { 'location': results[long] });
+  res.writeHead(301, { 'location': results[2] });
   res.end();
 }
 })
