@@ -25,13 +25,13 @@ mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 //get number of records
 var currentRecord = db.collection('urlstorage').count();
 console.log(currentRecord)
-var short = parsedInt(currentRecord) + 1
-db.collection('urlstorage').insert({"short": short, "long":checkedURL})
+var short = parsedInt(currentRecord) + 1;
+db.collection('urlstorage').insert({"short": short, "long":checkedURL});
 
 });
 } else {
   usedURL = sanitize(usedURL.substring(1))
-  console.log(usedURL)
+  //console.log(usedURL)
   mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 
 var stuff = db.collection('urlstorage').find({"short": "1"},function(err, doc){console.log(doc)});
