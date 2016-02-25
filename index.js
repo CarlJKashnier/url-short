@@ -32,7 +32,7 @@ db.collection('urlstorage').insert({"short": docs+1, "long":checkedURL})});
   //console.log(usedURL)
   mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 
-var stuff = db.collection('urlstorage').findall();
+var stuff = db.collection('urlstorage').find();
 console.log(stuff)
 res.writeHead(200, stuff);
 res.end();
