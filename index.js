@@ -31,6 +31,7 @@ db.collection('urlstorage').insert({"short": docs+1, "long":checkedURL})});
   usedURL = parseInt(sanitize(usedURL.substring(1)))
   //console.log(usedURL)
   mongo.connect(process.env.MONGOLAB_URI,function(err,db){
+//taco
 
 var stuff = db.collection('urlstorage').find({"short": usedURL},{"long":true, "short":false, "_id":false},function(err, docs){
   console.log(docs)
