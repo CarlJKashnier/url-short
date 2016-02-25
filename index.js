@@ -25,11 +25,13 @@ mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 //get number of records
 var currentRecord = db.collection('urlstorage').count();
 db.collection('urlstorage').insert({"short": currentRecord + 1, "long":checkedURL})
+
 });
 } else {
   usedURL = sanitize(usedURL.substring(1))
   console.log(usedURL)
   mongo.connect(process.env.MONGOLAB_URI,function(err,db){
+    db.collection.update();
 var stuff = db.collection('urlstorage').find({"short": 1},function(err, doc){console.log(doc)});
 
 
