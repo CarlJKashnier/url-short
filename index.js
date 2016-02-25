@@ -22,7 +22,7 @@ if (checkedURL == "Please input valid URL"){
   return
 }
 //URL entered -- verifyed then add dataset 2MB max size for DB
-mongoose.connect(process.env.MONGOLAB_URI,function(err,db){
+mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 //get number of records
 var currentRecord = db.collection('urlstorage').count();
 console.log(currentRecord)
@@ -33,7 +33,7 @@ console.log(currentRecord)
 } else {
   usedURL = sanitize(usedURL.substring(1))
   //console.log(usedURL)
-  mongoose.connect(process.env.MONGOLAB_URI,function(err,db){
+  mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 
 var stuff = db.collection('urlstorage').find({"short": "1"},function(err, doc){console.log(doc)});
 
