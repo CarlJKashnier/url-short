@@ -44,20 +44,20 @@ return
 
 
 
- mongo.db.open(process.env.MONGOLAB_URI,function(err,db){
+ mongo.connect(process.env.MONGOLAB_URI,function(err,db){
 var collection = db.collection('urlstorage')
 var intForLU = parseInt(usedURL)
 console.log("#" + intForLU +"#")
-var stuff = collection.findOne(({"short": 1},{long:1, short:0, _id:0}),function(err, doc){
-  if(doc) //if it does
-  {
-      console.log(doc); // print out what it sends back
-  }
-  else if(!doc) // if it does not
-  {
-      console.log("Not in docs");
-  }
-  db.close();
+var stuff = collection.findOne(({"short": 1},{long:1, short:0, _id:0}).toArray(function(err, doc) //find if a value exists
+{
+    if(doc) //if it does
+    {
+        console.log(doc); // print out what it sends back
+    }
+    else if(!doc) // if it does not
+    {
+        console.log("Not in docs");
+    });
 });
 
 });
